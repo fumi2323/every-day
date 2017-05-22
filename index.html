@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <title>スクロール実験</title>
+</head>
+<body style="text-align:center;">
+  <h1>スクロール実験</h1>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <p>hello!</p>
+  <div id="back-to-top" style="position:fixed; right:5px; bottom:5px;"><a href="#">うえ</a></div>
+  <div id="pos" style="position:fixed; left:5px; bottom:5px;">
+  <script>
+  $(function(){
+    // #back-to-topを消す
+    $('#back-to-top').hide();
+
+    // スクロールが十分された#back-to-topを表示、スクロールが戻ったら非表示
+    $(window).scroll(function(){
+      $(this).scroll(function(){
+        $('#pos').text($(this).scrollTop());
+        if ($(this).scrollTop() > 60){
+          $('#back-to-top').fadeIn();
+        } else {
+          $('#back-to-top').fadeOut();
+        }
+      })
+    });
+
+    // #bck-to-topがクリックされたら上に戻る
+    $('#back-to-top a').click(function(){
+      $('body').animate({
+        scrollTop:0
+      }, 1000);
+      return falese;
+    });
+  });
+  </script>
+</body>
+</html>
