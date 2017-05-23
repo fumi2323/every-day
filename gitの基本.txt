@@ -45,3 +45,8 @@ git remote origin URL でリモートリポジトリを追加
 -------------------追記
 git remote add origin URL でリモートサーバー登録
 git push origin master でまぁアップみないなもの。
+
+-----------------追記
+git add,gitcommitは毎回やる。
+git add . は全ファイルステージに
+git commit -m "1行目" -m "3行目"　となるß
