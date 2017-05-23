@@ -50,3 +50,9 @@ git push origin master でまぁアップみないなもの。
 git add,gitcommitは毎回やる。
 git add . は全ファイルステージに
 git commit -m "1行目" -m "3行目"　となるß
+
+！！
+変更したらファイルも戻ッタ！！
+これは便利かもバージョン管理が！！
+
+ってそのためのシステムだよね。
