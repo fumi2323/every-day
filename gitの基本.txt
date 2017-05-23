@@ -49,4 +49,7 @@ git push origin master でまぁアップみないなもの。
 -----------------追記
 git add,gitcommitは毎回やる。
 git add . は全ファイルステージに
-git commit -m "1行目" -m "3行目"　となるß
+git commit -m "1行目" -m "3行目"　となる
+
+
+一応そのまま追記しちゃうけど実際はぶらんちってなんだろ？
