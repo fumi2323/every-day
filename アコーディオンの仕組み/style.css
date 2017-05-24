@@ -11,3 +11,13 @@
   color: #000;
   line-height: 1;
 }
+
+label {
+  display: block;
+  margin: 0 0 2px 0;
+  padding: 12px;
+  line-height: 1;
+  color: #fff;
+  background: #007bbb;
+  cursor: pointer;
+}
