@@ -1,0 +1,13 @@
+.menu {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.memu a{
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+  line-height: 1;
+}
