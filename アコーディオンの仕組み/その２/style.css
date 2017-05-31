@@ -1,0 +1,28 @@
+.ac-container{
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.ac-container label{
+  height: 30px;
+  line-height: 1.8;
+  font-size: 20px;
+  padding: 5px 20px;
+  display: block;
+  cursor: pointer;
+  color: #666;
+  background: #eee;
+  border-top: 1px solid #ccc;
+}
+.ac-container input{
+  display: none;
+}
+.ac-container article{
+  overflow: hidden;
+  height: 0;
+  transition: 0.6s;
+}
+.ac-container input:checked ~ article{
+  height: 150px;
+  border-top: 1px solid #ccc;
+}
