@@ -9,3 +9,5 @@ gitのディレクトリで
 git config user.name "ユーザー名"
 git config user.email "git登録メアド"
 を設定してれば反映される。
+
+コメント追加
