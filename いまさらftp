@@ -1,0 +1,32 @@
+今更FTPのおさらい
+ターミナルでFTPをやるとき
+
+サーバsshログイン中でもできる。
+
+・やり方
+ftp[Enter]
+ftp>　こんな感じになる。
+open[Enter]セッション開始
+(to)どことつなぐか聞いてくるので、アドレスやFTPを入力する[Enter]
+(Name)ユーザ名を聞いてくるので、接続するユーザ名を入力[Enter]
+(Password)パスワードを聞いてくるので、入力[Enter]
+
+まとめて入力してもいいみたい
+例　ftp://hoge:password@ftp.fuga.com:2121/subdir
+
+
+・やめるときは
+まずセッションを閉じる
+close[Enter]
+
+ftpを終了する
+bye
+（以外に、exitやquwitと勘違いする）
+
+
+・基本的にlsやcdが使えるので保存したい場所に移動してmkdirなどでディレクトリを作る
+
+基本コマンド
+put（送信）
+get（受信）
+delete(削除)
