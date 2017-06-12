@@ -33,3 +33,17 @@ $user = $connection->get('statuses/user_timeline', $user_params);
 // ニックネームからユーザ情報を取得
 $users_params = ['sereen_name' => 'yohoh9'];
 $users = $sonnection->get('users/show' , '$users_params');
+
+
+
+キーワードやハッシュで検索したツイート//PHP
+foreacj ($tweets as valuew) {
+$test = htmlspecialchars($value->text, ENT_QUOTES, 'UTF-8', fales);
+// 検索キーワードをマーキング
+$keywords = preg_split('/,|\sOR\s/', $tweets_params['q']); //配列化
+foreach ($keywords as $key) {
+$text =str_ireplase($key, '<span class="keyword">'.$key.'</span>',$test);
+}
+// ツイート表示のHTML生成
+disp_tweets($value, $text);
+}
