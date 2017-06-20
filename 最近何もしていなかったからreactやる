@@ -1,0 +1,48 @@
+ReactとはFacebook製のJSライブラリ
+URL:http://creator.dwango.co.jp/3413.html
+を参照して学習中
+
+Backbone　AngularといったJSフレームワーク
+
+Javascript=jQuery
+
+データバインディングの世界
+
+データバインディングとは
+jQueryは基本的にDOMを直接操作していくような実装。
+
+データバインディングは、DOMがデータ(モデル)に紐付けられていて、データが講師位されると動悸してDOMも更新される。
+
+APIとデータのやり取りをしてその結果をUIに反映させるような一般的なWEBアプリケションの場合、いちいち取得したデータをもとに直接DOMを操作するのは面倒。予めルールを決めておいて、データが更新されたらルールに応じて自動的にDOMが更新されるといった仕組みのほうが賢い。
+
+コンポーネント思考
+ReactはUIをコンポーネントの組み合わせで構築
+各コンポーネントは親から受け継いだ「props」と、自身の状態としての「state」を持っている。
+
+
+JSX
+
+Reactのテンプレート部分、コンポーネントのJSファイルのrenderメソッドにJSXという記法で記述
+
+例
+var MyComponent = React.createClass({
+  render : function() {
+    return (
+      <div className="user">
+       <h1>{this.props.username}</h1>
+       <p>{this.props.description}</p>
+      </div>
+    );
+  }
+});
+
+var ParentComponent = React.createClass({
+  render : function(){
+    return(
+      <div className="parent">
+        <ChildComponent name="Taro" age="10"/>
+        <ChildComponent name="Jiro" age="7" />
+      </div>
+    );
+  }
+});
