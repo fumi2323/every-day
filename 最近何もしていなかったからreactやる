@@ -46,7 +46,7 @@ var ParentComponent = React.createClass({
     );
   }
 });
-
+Adobe製超軽量！！レスポンシブCSS フレームワークTopcoat
 って言ってから2週間放置。
 はじめなきゃ始まんないのに。。。
 
@@ -54,3 +54,53 @@ var ParentComponent = React.createClass({
 これはECMAScript3,5,2015以降に準拠したJavaScript互換言語だった。
 ちょっとQeeta見たけどちんぷんかんぷん（笑）
 
+
+もちっとReact.jsを知ってみる
+
+React.jsはUIパーツを作るためのライブラリ、Facebookが公開
+入力する→結果をすぐ表示
+そんなUIに向いてる
+
+jQueryと比較
+別物なので比較できない、jQueryはアニメーション、ReactはUIみたいな感じ
+index.htmlかな？
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://fb.me/react-0.13.3.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script sec="./build/hello.js"></script>
+   </body>
+  </hmtl>
+  
+  test.js
+var Helloworld = React.createClass({
+  render: functino(){
+    return(
+      <p>Hello!World!</p>
+    );
+  }
+});
+// id='app'に<HelloWorld   />を埋め込む（マウント）
+var m = React.render(<HelloWrold  />, document.getElementById('app'));
+document.getElementById('app')
+
+コンパイルするのにぱいらーがいる
+react-toolsをいんすこ。（ほかにもBabelとか
+）
+
+っとその前にnode.jsが必要
+。。。
+npmアカウント？
+フロントエンドに必須　node.js
+Node.jsとは
+JavaScriptはもともとブラウザーで解釈して、事項するクライアントサイドの言語
+
+Node.jsを使うとローカル上でJavaScriptを実行できるようになる。
+Node.jsによりサーバーサイドの言語もJavaScriptで書けるようになり、サーバ、クライアントサイドともに同じ言語で開発可能
+http://yohshiy.blog.fc2.com/blog-entry-307.html参考
+
+
+  
