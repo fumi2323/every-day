@@ -46,3 +46,6 @@ var ParentComponent = React.createClass({
     );
   }
 });
+
+って言ってから2週間放置。
+はじめなきゃ始まんないのに。。。
