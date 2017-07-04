@@ -143,3 +143,19 @@ fetch('/api/items').then(res => res.json()).then(data => {
     document.getElementById('container')// ココにレンダリング
   );
 });
+
+
+さってとまずはMACでやることは前提で！！
+HomeBrewをインストール公式ページから
+
+インストールが完了して　brew doctorで確認してみると
+Warningが出てる。
+Warning: Your Xcode (8.2) is outdated.
+Please update to Xcode 8.3.3 (or delete it).
+Xcode can be updated from the App Store.
+
+41dhcp152:~ F.Kurita$ brew doctor
+Your system is ready to brew.
+でOK
+
+http://www.hirooooo-lab.com/entry/development/react-redux-setup-environment
