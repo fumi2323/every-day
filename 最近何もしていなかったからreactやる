@@ -74,7 +74,7 @@ index.htmlかな？
     <script sec="./build/hello.js"></script>
    </body>
   </hmtl>
-  
+
   test.js
 var Helloworld = React.createClass({
   render: functino(){
@@ -102,5 +102,44 @@ Node.jsを使うとローカル上でJavaScriptを実行できるようになる
 Node.jsによりサーバーサイドの言語もJavaScriptで書けるようになり、サーバ、クライアントサイドともに同じ言語で開発可能
 http://yohshiy.blog.fc2.com/blog-entry-307.html参考
 
+Reactがやること
+非常にシンプルでAPIも数えるほどしかない。
+3行で説明すると
+「ページ状態を保持しているプレーンなJSのオブジェクト」に、
+「テンプレート的な関数」を作用させて、「仮想DOM」と呼ばれるFOMの設計図を取り出し、
+その設計図を使って本物のDOMを構築する。
 
-  
+「商品データを一覧表示」をjQueryでやると
+$.getJSON('/api/items').then(data => {
+  const ul = $('ul.item-list').empty();
+  data.items.forEach(item => {
+    const li = $('<li>').addClass('item').appendTo(ul);
+    if (item.stock === 0 ) li.addClass('soldout');
+    $('<div>').addClass('item-name').text(item.name).appendTo(li);
+    $('<div>').addClass('item-price').text(item.price).appendTo(li);
+  });
+});
+
+Reactで書くと
+// ItemListのコンポーネント定義（実態は関数）
+const ItemList = props => {
+  return <ul className="item-list">
+    {props.item.map(item => <ItemDetail item={item} />)}
+  </ul>;
+};
+
+// ItemDetailのコンポーネント定義
+const ItemDetail = props => {
+  const item = props.item;
+  return <li className={'item' + item.stock === 0 ? 'soldout' : ''}>
+    <div className="item-name">{item.name}</div>
+    <div className="item-price">{item.price}</div>
+  </li>;
+};
+
+fetch('/api/items').then(res => res.json()).then(data => {
+  ReactDOM.render(
+    <ItemList item={data.items} />, // これを
+    document.getElementById('container')// ココにレンダリング
+  );
+});
