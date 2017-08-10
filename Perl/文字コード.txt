@@ -1,0 +1,15 @@
+文字コードなめたらいかんぜよ！！
+
+アプリをPerlで作ることになった基本的にHTTPリクエストをUTF-8にしてるからいいやっておもってたら、
+jsonをハッシュ化して使うにあたってはまった！！
+
+
+よくわからんないけど力技で解決！！
+my $json = encode('UTF-8',$json2ref);　　UTF-8にされるjson
+my $hash_json = decode_json($json);　　ハッシュ化します
+my $data21 = $hash_json->{"data"}[0]{"本文"};　特定の内容を抜きだす
+my $test2 = decode('UTF-8',$data21);　でこーど
+my $test2 = encode('UTF-8',$test2);　エンコード....
+
+
+文字コードちゃんと勉強し直さなきゃ
