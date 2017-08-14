@@ -1,0 +1,7 @@
+CGI::AjaxはHTMLにはっせいしたJavascriptイベントをトリガーに非同期にperlのサブルーチンをコールする。
+
+use CGI::Ajax; で宣言して
+my $cjx = new CGI::Ajax('JSFUNC' => \&PERLFUNC );
+
+
+JS
