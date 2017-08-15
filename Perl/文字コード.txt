@@ -40,3 +40,9 @@ my $json = encode('UTF-8',$jsondata);
 my $hash_json = decode_json($json);
 
 my $text_data_n = scalar(@{$hash_json->{"data"}});# ページ番号取得
+
+====================================
+for (my $i=0; $i < $text_data_n ;$i++){
+  my $text_data1 = scalar($hash_json->{"data"}[$i]{"ページ番号"});
+  my $text_data2 = scalar($hash_json->{"data"}[$i]{"本文"});
+  で表示化
