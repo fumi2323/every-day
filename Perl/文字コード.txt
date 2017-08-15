@@ -13,3 +13,30 @@ my $test2 = encode('UTF-8',$test2);　エンコード....
 
 
 文字コードちゃんと勉強し直さなきゃ
+
+よくわからないけど
+スカラでうまく行ったパターン
+#文字コード変換
+my $json = encode('UTF-8',$json2ref);
+my $hash_json = decode_json($json);
+
+
+#my $text_data = $hash_json->{"data"}[0]{"ページ番号"};
+my $text_data = $hash_json->{"data"}[0]{"本文"};
+my $text_data_n = scalar($text_data);
+my $text_data =scalar($hash_json->{"data"}[0]{"ページ番号"});
+
+my $text_data_nn = $hash_json->{"data"};
+my $text_data_nnn = scalar(@$text_data_nn);
+
+#$text_data = decode('UTF-8',$text_data);
+#$text_data = encode('UTF-8',$text_data);
+
+
+
+#こうなったscalarのちから技
+#文字コード変換
+my $json = encode('UTF-8',$jsondata);
+my $hash_json = decode_json($json);
+
+my $text_data_n = scalar(@{$hash_json->{"data"}});# ページ番号取得
