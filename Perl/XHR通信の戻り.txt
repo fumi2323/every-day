@@ -1,0 +1,6 @@
+perl側
+
+print 'Content-type: text/html\n\n';
+print '戻りコメント';
+
+が必要。
