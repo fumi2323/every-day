@@ -1,0 +1,31 @@
+perlでのダウンロードの方法
+
+＃＃ファイルを読み込んでやる方法
+#!/usr/local/bin/perl
+
+use strict;
+
+#-- ダウンロード後のファイル名 --#
+my $file = 'test.txt';
+my $disfile = 'ファイルパス'.$file;
+
+#-- ダウンロード --#
+print "Content-Type: application/octet-stream\n";
+print "Content-Disposition: attachment; filename=$file\n";
+print "\n";
+
+#-- 内容を出力 --#
+open (FILE, "< $disfile");
+binmode FILE;
+binmode STDOUT;
+print while (<FILE>);
+close(FILE);
+
+＃＃Linuxのwgetを使う方法（参考：http://www.nishishi.com/blog/2016/01/perl_wget_url_d.html）
+`/usr/local/bin/wget -q -O $fileName $targetUrl`;
+
+my $targetUrl  = "http://www.example.com/path/to/image.jpg";
+my $fileName = "exampleimage.jpg";
+`/usr/local/bin/wget -q -O $fileName $targetUrl`;
+
+とある。ボタンクリックで発火させるなら上でいいのかな？
