@@ -1,0 +1,21 @@
+配列の代入について
+
+配列の作成
+my @hairetu = (); #初期化
+
+my @hairetu = ('a', 'b', 'c'); #
+
+差し替え
+$hairetu[1] = 'P';
+print @hairetu; #a,P,c 
+#ココまでは理解できる
+
+
+@hairetu = ('a', 'b', 'c'); #
+
+
+で、要素以上を指定すると
+$hairetu[5] = 'P';
+print @hairetu; #a,b,c,,,P
+
+ってなる。
