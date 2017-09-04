@@ -1,0 +1,16 @@
+htmlからのPOSTでname属性が同じ場合どうなるのか？
+
+結果、一応リストで入るけど、$p->param('hensu');
+は最初のvalueが入る。
+
+その為一度は
+my @hensu = $p->param('hensu');
+
+とやらなきゃいけないよ。
+そうしたら後は簡単。
+my $hensu[0];とか
+foreach(@hensu){
+pritn $_;
+}
+
+と、いつものリストと同じように扱えるから。
