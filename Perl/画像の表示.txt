@@ -1,0 +1,15 @@
+# 画像を読みこむ
+open(IN, $last_dir.'/'.$FileName.'.jpg');
+binmode(IN);                         # バイナリモードで読み出す
+my $size = read(IN, my $image, -s $last_dir.'/'.$FileName.'.jpg');
+close(IN);
+
+# 画像を書き出す。
+print "Content-type: image/jpeg\n\n";   # image/gif で書き出す
+binmode(STDOUT);                     # バイナリモードにする
+print $image;
+
+
+
+とやる場合9行目のbinmode(STDOUT);
+が8行目のprintよりまえだと表示されないことがあった。
