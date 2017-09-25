@@ -33,3 +33,60 @@ perlでファイルのロック？
 非ブロックは自分がロックできるかできないかをtrue,falseですぐ結果を返すやつ。
 
 以上！！
+
+
+# ファイルの読み書きロック
+#読み込み時
+eval {
+  local $SIG{ALRM} = sub{die "time out"};
+  open (LOCK) or die "LOCKopen NG";
+  alarm(5);
+  flock(LOCK,1) or die "LOCK NG";
+  alarm(0);
+}
+alarm(0);
+open (TEMP, filepath) or die "TEMPopen NG"
+my $tmp_file = <TEMP>;
+close (TEMP);
+
+
+
+
+close(LOCK);
+
+return OK NG + $tmp_file;
+exit;
+
+# 書込み時
+eval {
+  local $SIG{ALRM} = sub{die "time out"};#タイムアウト
+  open (LOCK, "+<$datafile") or die "LOCKopen NG";#lockファイルオープン
+  alarm(5);#先行プロセス待ち（5秒)
+  flock(LOCK,2) or die "lock NG"; #ロック確認
+  #alarm(30);#自分の制限時間
+  #close (LOCK); #close自動ロック解除
+  alarm(0);#アラーム解除
+};
+alarm(0);
+if ($@ =~ /time out/){
+  #タイムアウト時の処理
+}
+elsif($@){die}#タイムアウト以外の理由
+
+open (TEMP, filepath) or die "TEMPopen NG"
+seek TEMP, 0, 0;
+print TEMP;
+close TEMP;
+
+rename(temp,file);
+unlink(temp);
+
+
+
+
+close(LOCK);
+
+return OK or err;
+exit;
+1;
+
