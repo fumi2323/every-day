@@ -5,3 +5,6 @@
  print "\n\n";
  
  治った
+ 
+ 参考
+ http://d.hatena.ne.jp/midori_kasugano/20101007/1286423287
