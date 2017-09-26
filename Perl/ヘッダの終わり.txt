@@ -1,0 +1,7 @@
+ Premature end of script headers
+ ってのが出たら
+ 処理させるcgiのラストにヘッダの終わりを各
+ 
+ print "\n\n";
+ 
+ 治った
