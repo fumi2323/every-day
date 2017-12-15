@@ -2,6 +2,76 @@
 
 イベントハンドラとイベントリスナだよ。
 
-イベントハンドラとはいつのイベントについて1つの処理しかできない。
+イベントハンドラとは1イベントについて1つの処理しかできない。
 
 イベントリスナは複数設定できるんだ。
+
+ってことで、トリガーの使い方。
+[onChange]で
+
+１．フォーム要素のonchenge属性を使う
+  <input type="text" onchange="my_func()">
+  
+  js
+  function my_func(){
+  
+  }
+  
+  要素から実行
+  
+  
+２．onChangeプロパティ
+  <input type="text" if="my_id">
+  
+  js
+  function my_func(){
+  
+  }
+ココまでほぼ１と一緒。
+でｊｓに追加する
+  var obj = document.getElementById("my_id");
+  obj.onChange = my_func();
+  
+ これだと、１イベントハンドラに１処理だけ。
+ 
+ 
+ 
+ ３．addEventListernerをつかう
+   <input type="text" if="my_id">
+  
+  js
+  function my_func(){
+  
+  }
+  function my_func2(){
+  
+  }
+  var obj = document.getElementById("my_id");
+  ココまで２と一緒
+　　　　で追加
+
+  obj.addEventListener('change', my_func);
+  obj.addEventListener('click', my_func2);
+  １つのイベントに対して複数の処理を追加できる。
+  
+addEventListener('イベント名', イベントリスナ, フェーズの設定？)
+
+イベントリスナって要するに呼び出される関数のこと
+フェーズの設定　とりあえず基本はfalse
+trueにするとイベントキャプチャリング->イベントバブリングの逆で子要素をクリックすると親要素から子要素に向けてイベントが伝わる
+
+  
+
+イベントバブリング
+子要素でイベントが起こると、その親要素でもイベントが起きる
+
+var listener = function(ev){
+  console.log("target:", ev.target, "currentTaget:", ev.currentTarget);
+};
+
+currentTargetはそのイベントリスナが登録されている要素
+targetは実際にイベントが起きた要素
+
+innerTextはFireFoxでどうさしない？昔は？
+tectContentのほうがいい？
+今度調べておこう。
