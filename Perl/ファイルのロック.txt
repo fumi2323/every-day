@@ -90,3 +90,46 @@ return OK or err;
 exit;
 1;
 
+
+ファイルのロック
+sub save {#書込みをする場合
+  my ($file_path, $file_data) = @_;
+  my ($err);
+  eval{
+    local $SIG{ALRM} = sub{die "time out"};
+    sysopen(LOCK, $file_path.'.lock', O_RDWR|O_CREAT) or $err = "LockFile open error!";
+    alarm(5);
+    flock(LOCK, 2);
+  };
+  alarm(0);
+  #一時ファイルの作成
+  sysopen(FH,$file_path.'.temp',O_WRONLY|O_CREAT) or $err = "TempFile open error!";
+  print FH $file_data;
+  close(FH);
+  rename($file_path.'.temp',$file_path);
+  unlink($file_path.'.lock');
+  close(LOCK);
+  return 'OK';
+}
+
+sub load {#ファイル読込　ファイル名のみ
+  my $file_path = shift;
+  my ($err);
+  eval{
+    local $SIG{ALRM} = sub{die "time out"};
+    sysopen(LOCK, $file_path.'.lock', O_RDONLY|O_CREAT) or $err = "LockFile open error!";
+    alarm(5);
+    flock(LOCK, 1);
+  };
+  alarm(0);
+  sysopen(FH,$file_path,O_RDONLY|O_CREAT) or $err = "File open error!";
+  my @file_data = <FH>;
+  close(FH);
+  unlink($file_path.'.lock');
+  close(LOCK);
+  my $file_data1 = \@file_data;
+  return $file_data1;
+}
+
+基本的のこれで多少の障害体制を持てると思う。
+
