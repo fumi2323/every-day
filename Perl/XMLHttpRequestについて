@@ -1,0 +1,18 @@
+# XHR(XMLHttpRequest)について
+
+サーバーとの非同期通信が出来る。
+（ただし、さいきんはfetchがある。しかしIE未対応なので業務アプリにはまだこっちか？）
+
+１．使い方
+var xhr = new XMLHttpRequest();
+xhr.open('POST' , URL);
+xhr.send;
+
+
+基本はこれだけ
+ただし、データが無い場合リクエストヘッダが自動選択されない場合があるので、
+perlのnew CGI;などでエラーが起きる場合がある。
+
+そのときなどは
+xhr.setRequestHeader('content-Type', 'application/X-www-form-urlencode');
+を使用すること。
