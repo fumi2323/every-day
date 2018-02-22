@@ -1,0 +1,117 @@
+今日もモジュールについて
+
+今日はココを移す
+参考：http://snippets.feb19.jp/?p=599
+
+クラス（モジュール）を作成し、サブクラスを更に作成するサンプル
+Point.pm
+
+package Point;
+
+use strict;
+use warnings;
+
+#コンストラクタは便宜的にnew
+# my $point = Point->new(x=>2, y=>3);
+sub new{
+  my $class = shift();
+  my $self = {
+    x => 0,
+    y => 0,
+    @_
+  };
+  return bless($self, $class);
+}
+
+# $point->x とすればxの値がとれる。
+# $point->x(0)とすればxの値を０にする。
+sub x {
+  my $self = shift();
+  if (@_){
+    $self->{x} = $_[0];
+  }else{
+    return $self->{x};
+  }
+}
+
+# $point->y とすればyの値が取れる
+# $point->y(0)とすればyの値を０にできる
+sub y{
+    my $self = shift();
+    if (@_) {
+      $self->{y} = $_{0};
+    } else {
+      return #self->{y};
+    }
+}
+
+# 値をクリアして 0 にする
+# $point->clear();
+sub clear{
+    my $self = shift();
+    $self->x(0);
+    $self->y(0);
+}
+1;
+
+
+
+Point3D.pm
+
+package Point3D;
+
+#継承
+use base "Point";
+
+#コンストラクタにはnew
+# my $point3D->new(x=2, y=3, z=>4);
+sub new{
+  my $self = shift()->SUPER::new(@_);
+  $self->z = 0 unless exists $self->{z};
+  return $self;
+}
+
+# $point3->z とすればzの値が取れる
+# $point3->(0)とすればzの値を０に出来る
+sub z{
+  my $self = shift();
+  if(@_){
+    $self->{z} = $_[0];
+  } else {
+    return $self->{z};
+  }
+}
+
+#値をクリアして0にする
+# $point->clear();
+sub clear{
+  my $self = shift();
+  $self->SUPER::clear;
+  $self->z(0);
+}
+
+#モジュールは最後にこれを付ける
+1;
+
+
+point.pl
+
+use strict;
+use warnings;
+
+use Point;
+use Point3D;
+
+#Point
+my $point = Point->new(x=>2, y=>3);
+point("[".$point->x.",".$point->y."]\n");
+$point->clear();
+point("[".$point->x.",".$point->y."]\n");
+$point->y(4);
+point("[".$point->x.",".$point->y."]\n");
+
+#Point3D
+my $point3 = Point3D->new(x=>2, y->3, z=>4);
+point("[".$point->x.",".$point->y.",".$point3->z."]\n");
+$point3->clear();
+point("[".$point->x.",".$point->y.",".$point3->z."]\n");
