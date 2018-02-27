@@ -45,4 +45,54 @@ sub instance_method{
   my $self = shift;
   
   #インスタンス変数（コンストラクタで生成してblessしたハッシュ）へはこのようにアクセスできる。
-  print $sel
+  print $self->{msg}. "\n";
+}
+
+# クラスメソッド
+# new しなくても呼べる
+sub class_method {
+  my $class = shift;
+  my $msg = 'I want to go home !!';
+  
+  # 第一引数を調べる
+  if (ref($class)) {
+    # リファレンスならインスタンスメソッド
+    print 'instance> '. $msg. "\n";
+  } else {
+    #リファレンスじゃなきゃ文字列。クラスメソッド。
+    print 'class> '. $msg. "\n";
+  }
+}
+
+# デストラクタ
+# リファレンスがなくなると自動的に呼ばれる
+sub DESTROY {
+  print "destroy now.
+}
+
+
+# 継承の話
+# 親クラス
+package Bace;
+sub new {
+  my $class = shift;
+  my %param = @_;
+  my $self = bless {
+    basemsg => $param{basemsg},
+    }, $class;
+    return $self;
+  }
+  # 子クラス
+  package Child;
+  sub new {
+    my $class = shift;
+    my %param = @_;
+    
+    # 親クラスを作成。ハッシュは共有になる
+    my $self = Base->new(basemsg => 'base');
+    
+
+
+    
+
+
