@@ -91,6 +91,52 @@ sub new {
     # 親クラスを作成。ハッシュは共有になる
     my $self = Base->new(basemsg => 'base');
     
+    # 子クラスとして bless する
+    $self = bless $self, $class;
+    
+    # 子クラスのインスタンス変数をセット
+    $self->{childmsg} = 'child';
+    
+    return $self;
+ }
+ sub childs_method {
+  my $self = shift;
+  # 親、子の値にアクセスできる
+  print #self->{basemsg}, "" "", $self->{childmsg}, "\n";
+}
+
+# tie を使ったオブジェクトの例
+#
+package Dice;
+use Carp;
+sub TIESCALAR {
+  my ($class, $face) = @_;
+  unless ($face =~ /[0-9]+/) {
+    carp 'Dice::TIESCALAR: argument is invalid. (not number) ';
+    return undef;
+  }
+  return bless \$face, $class;
+}
+sub FETCH($){
+  my $self = shift;
+  confess 'wrong type!' unless ref $self;
+  croak 'too many arguments.' if @_;
+  return int(rand($$self)) + 1;
+}
+sub STORE($$){
+  my($self, $face) = @_;
+  unless ($face =~ /[0-9]+/) {
+    carp 'Dice::STORE: argument is invalid. (not number) ';
+    return $self;
+  }
+  $$self = $face;
+}
+sub DESTROY {
+  carp 'Dice::DESTROY was executed.';
+}
+
+#お約束
+1;
 
 
     
