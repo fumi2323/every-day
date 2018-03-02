@@ -1,0 +1,36 @@
+前回の理解度少ないからもう一回書いてみる
+参考：https://gist.github.com/ywindish/2155288
+
+#Perlのオブジェクト指向なコードを書いてみる
+use strict;
+use warnings;
+
+# 名前空間の宣言
+package PerlOop;
+
+# コンストラクタ
+sub new {
+  #現在のクラス（パッケージ）を取得する
+  my $class = shift;
+  
+  # 引数はハッシュで受けたほうが移植性が高くなる。
+  my %param = @_;
+  
+  my $self = bless {
+      # ハッシュに初期値を設定する
+      msg => $param{msg},
+      }, $class;
+      
+ #さらに処理をかくときはここ
+      #生成したハッシュのリファレンスを返す
+      return $self;
+  }
+  
+  # インスタンスメソッド
+  # new　しないで呼ぶとエラーになる
+sub instance_method {
+  my $self = shift;
+  
+  # インスタンス変数(コンストラクタで生成してblessしたハッシュ)へはこのようにアクセスする
+  print $self->{msg}, "\n";
+}
