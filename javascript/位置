@@ -1,0 +1,31 @@
+#ｊｓの書き込む位置
+
+head内に書く
+すべての読み込みが完了しないとDOMがレンダリングされないため、表示が遅くる
+
+body内に書く
+よくある「閉じタグ」の前
+DOMレンダリングで表示してからJSを読み込むので体幹早い
+
+window.onload = function(){
+//DOMツリー構造＋関連リソースが読まれた後に実行される。
+}
+ただし、複数のonloadは最後のしか実行されない
+その場合はaddEventListener('load', function(){
+//処理
+｝）
+ってやれば複数実行されある
+
+あと、onloadは意外と遅い
+画像まで読み込んだ後に実行されるから。
+
+DOMさえOKなら有るかえるからその場合は、
+DOMContentLoaded
+window.addEventListener('DOMContentLoaded', function(){
+})
+
+あえて、画像のサイズ知りたいなら
+img.onload=function(){
+console.log(img.width);
+};
+ッテするのもあり
