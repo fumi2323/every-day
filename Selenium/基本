@@ -1,0 +1,34 @@
+#WEBテスト　自動化　Selenium　の基本
+参考：https://qiita.com/kno2502/items/5cd9c9daa6025b37ab7b
+
+
+Rubyで
+
+読み込み待ち
+websiteは非同期処理を使っているものが有る。その場合処理を待たないと要素が見つからなくて例外が発生する。
+
+基本待つは sleep でイケルがこれはただ指定秒数待つだけ。
+
+そこで
+Implicit Wait
+find_elementを実行した時、指定の要素が検知出来るまで待って探す事ができる。
+その場合でも指定した秒数を超えるとtimeoutして例外を発生させることが出来る。
+
+driver = Selenium::WebDriver.for :safari, :profile => Selenium::WebDriver::Firefox:browser.manage.timeouts.implicit_wait = 10
+
+
+特定のリクエストだけの場合
+#インスタンス生成
+wait = Selenium::WebDriver::Wait.new(:timeout => 30)
+
+#要素の検知を待って取得
+e = wait.until {dirver.find_element(:xpath, "//input[@name='sometxt']")}
+
+#要素がClick出来るのを待つ
+e = wait.until { e.displayed? && e.enabled?}
+(ExpectedConditionsってクラスが有るけどRubyでは使えないらしい)
+
+#特定の文字列がページ内に有るか
+driver.page_source.match(/ほげほげ/u)
+#下のやり方は重い
+driver.find_element(:xpath, "//body").innerHTML.match(/ほげほげ/u)
