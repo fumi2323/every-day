@@ -1,8 +1,98 @@
 #WEBテスト　自動化　Selenium　の基本
+参考：https://www.qoosky.io/techs/71dd2d67ea
 参考：https://qiita.com/kno2502/items/5cd9c9daa6025b37ab7b
-
-
 Rubyで
+
+スクリーンショット
+driver.save_screenshot "/tmp/ggogle.png"
+
+ページ情報
+puts driver.current_url
+puts driver.title
+puts dirver.page_souece
+
+要素セレクタ
+２種類ある
+find_element:該当要素がなければ例外を投げる
+find_elements:結果は配列で返る。該当要素がなければ空の要素
+
+#一般のセレクタ
+elements = driver.find_elements(:id => "myid")
+elements = driver.find_elements(:class_name => "myclass")
+elements = driver.find_elements(:tag_name => "div")
+elements = driver.find_elements(:name => "myname")
+elements = driver.find_elements(:xpath => "address")
+elements = driver.find_elements(:css => "ul#sample-id li")
+
+#<a>タグに特化したセレクタ
+elements = driver.find_elements(:link_text => "click") #<a href="">click</a>
+elements = driver.find_elements(:partial_link_text => "click") #<a href="">click here</a>
+
+#メソッドチェーン
+elements = driver.find_element(:tag_name => "body").find_elements(:xpath => 'div/p/a')
+
+#イテレート
+elements.each do |element|
+ puts element.text.encode('UTF-8')
+end
+
+要素情報を出力
+puts element.text
+puts element.attribute("id")
+
+リンクを押す
+element.click
+
+戻る・進む
+driver.nabigate.back
+driver.navigate.forward
+
+フォームへの情報入力＋サブミット
+#フォーム内容のクリア
+element.clear
+
+# inputまたはtextarea要素への値の代入
+element.send_keys("my name");
+
+#ラジオボタン
+elements[3].click
+
+#ドロップダウンリスト
+select = driver.find_element(:tag_name => "select")
+all_options = select.find_elements(:tag_name => "option")
+all_options.each do |option|
+ option.click if (true) #条件を指定
+end
+
+#ドロップダウンリスト２
+select = Selenium::WebDriver::Support::Select.new(driver.find_element(:tag_name => "select"))
+select.select_by(:index,0) # 0,1,2,....
+#select.select_by(:text, "mytext") #表示されるテキストによる選択
+#select.select_by(:value, "myvalue")#valueにより選択
+
+#サブミット
+element.submit #elementが所属するformのサブミットが実行さるるう
+
+#ウィンドウを複数開く
+driver = Selenium::WebDriver.for :firefox
+driver.get "http://www.google.com/"
+
+driver2 = Selenium::WebDriver.for :firefox
+driver2.get "http://www.google.com/"
+
+ポップアップボックス
+alert = driver.switch_to.alert
+でポップアップボックスを制御
+alert.text でテキスト取得
+alert.accept で「はい」「OK」をClick
+alert.dismiss で「いいえ」「キャンセル」をClick
+alert.send_keys "some text input"で入力
+
+※ベーシシックは無理
+
+
+
+ 
 
 読み込み待ち
 websiteは非同期処理を使っているものが有る。その場合処理を待たないと要素が見つからなくて例外が発生する。
