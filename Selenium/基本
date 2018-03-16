@@ -88,7 +88,15 @@ alert.accept で「はい」「OK」をClick
 alert.dismiss で「いいえ」「キャンセル」をClick
 alert.send_keys "some text input"で入力
 
-※ベーシシックは無理
+※ベーシシック認証は無理
+
+ダウンロードは基本的にダイアログが操作できない。
+無理やりやるなら、キーで操作させてsleepでまってってやる。でEnter。
+
+ドラッグ・アンド・ドロップ
+element = driver.find_element(:name => 'source')
+target = driver.find_element(:name => 'target')
+driver.action.drag_and_drop(element, target).perform
 
 
 
