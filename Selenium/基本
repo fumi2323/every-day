@@ -111,8 +111,13 @@ websiteは非同期処理を使っているものが有る。その場合処理�
 Implicit Wait
 find_elementを実行した時、指定の要素が検知出来るまで待って探す事ができる。
 その場合でも指定した秒数を超えるとtimeoutして例外を発生させることが出来る。
+driver = Selenium::WebDriver.for :firefox
+driver.manage.timeouts.implicit_wait = 10
+or
+driver = Selenium::WebDriver.for :firefox, :profile => Selenium::WebDriver::Firefox:browser.manage.timeouts.implicit_wait = 10
+（上記だとedgeが正常動作しない）
 
-driver = Selenium::WebDriver.for :safari, :profile => Selenium::WebDriver::Firefox:browser.manage.timeouts.implicit_wait = 10
+リクエストごと
 
 
 特定のリクエストだけの場合
