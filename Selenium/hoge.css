@@ -1,11 +1,12 @@
-body {
-	font-family: "Avenir Next", Helvetica, Arial, sans-serif;
-	padding:1em;
-	margin:auto;
-	max-width:42em;
-	background:#fefefe;
+body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1;
+    max-width: 960px;
+    padding: 30px;
 }
-
-h1, h2, h3, h4, h5, h6 {
-	font-weight: 0;
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
 }
