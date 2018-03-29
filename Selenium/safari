@@ -1,4 +1,8 @@
-「Selenium」で「Safari」の「ダイアログ」にハマる。
+Selenium使用時、Safariに物申したい！！
+
+
+１．要素.clickが一度目は選択になる！！
+２．「Selenium」で「Safari」の「ダイアログ」にハマる。
 
 Safariのalert等で表示されるポップアップウィンドウはプログラム自体が止まりました。
 
