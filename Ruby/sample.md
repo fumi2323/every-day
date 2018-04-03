@@ -14,7 +14,7 @@ elseif (player_hand == 0 && cpu_hand == 1) ||
 else
   puts "あなたの負けです!"
 end
-
+```
 
 puts "初めてのプログラム"
 
