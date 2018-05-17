@@ -15,3 +15,27 @@
 </label>
 ```
 ※idでヒモ付がいらないのでシンプルに書ける
+
+
+例
+```
+            
+            <div class="input_file">
+            <label class="input_file_btn btn btn-primary">
+                ファイルを選択
+                <input id="file001" type="file">
+            </label>
+            <label for="file001"></label>
+            <input type="text" value="ファイル未選択">
+            </div>
+
+
+            <div class="input_file">
+                    <label>
+                        <label for="file001" class="input_file_btn btn btn-primary">ファイルを選択</label>
+                        <input id="file001" type="file">
+                    </label>
+                    <input type="text" value="ファイル未選択">
+            </div>
+            
+```
